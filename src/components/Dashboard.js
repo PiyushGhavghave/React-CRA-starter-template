@@ -19,8 +19,8 @@ const Dashboard = () => {
         </div>
 
         <div className="charts-section">
-          <div className="chart-grid-single">
-            <div className="chart-container large">
+          <div className="chart-grid-three">
+            <div className="chart-container">
               <Chart
                 title="Total Revenue"
                 type="bar"
@@ -28,9 +28,6 @@ const Dashboard = () => {
                 colors={["#00D4AA", "#5570FF"]}
               />
             </div>
-          </div>
-
-          <div className="chart-grid">
             <div className="chart-container">
               <Chart
                 title="Customer Satisfaction"
