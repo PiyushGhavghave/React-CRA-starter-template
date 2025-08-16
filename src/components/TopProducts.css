@@ -1,0 +1,77 @@
+.top-products {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+}
+
+.products-table {
+  flex: 1;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 60px;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 60px;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f5f9;
+  align-items: center;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.product-rank {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.product-name {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.popularity-bar {
+  width: 100%;
+  height: 6px;
+  background-color: #f1f5f9;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.popularity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.product-sales {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: right;
+}
