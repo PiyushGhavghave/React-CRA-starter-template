@@ -10,39 +10,39 @@ const VisitorInsights = () => {
           <path
             d="M20,150 Q50,120 80,130 T140,110 T200,120 T260,100 T300,90"
             fill="none"
-            stroke="#ff6b6b"
-            strokeWidth="2"
+            stroke="#FF6B94"
+            strokeWidth="3"
           />
           <path
             d="M20,160 Q50,140 80,150 T140,130 T200,140 T260,120 T300,110"
             fill="none"
-            stroke="#4ecdc4"
-            strokeWidth="2"
+            stroke="#00D4AA"
+            strokeWidth="3"
           />
           <path
             d="M20,170 Q50,150 80,160 T140,140 T200,150 T260,130 T300,120"
             fill="none"
-            stroke="#45b7d1"
-            strokeWidth="2"
+            stroke="#5570FF"
+            strokeWidth="3"
           />
         </svg>
       </div>
       <div className="insights-legend">
         <div className="legend-row">
           <div className="legend-item">
-            <div className="legend-dot" style={{ backgroundColor: '#ff6b6b' }}></div>
+            <div className="legend-dot" style={{ backgroundColor: '#FF6B94' }}></div>
             <span>Loyal Customers</span>
           </div>
         </div>
         <div className="legend-row">
           <div className="legend-item">
-            <div className="legend-dot" style={{ backgroundColor: '#4ecdc4' }}></div>
+            <div className="legend-dot" style={{ backgroundColor: '#00D4AA' }}></div>
             <span>New Customers</span>
           </div>
         </div>
         <div className="legend-row">
           <div className="legend-item">
-            <div className="legend-dot" style={{ backgroundColor: '#45b7d1' }}></div>
+            <div className="legend-dot" style={{ backgroundColor: '#5570FF' }}></div>
             <span>Unique Customers</span>
           </div>
         </div>
