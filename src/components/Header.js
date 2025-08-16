@@ -1,5 +1,8 @@
 import React from 'react';
 import './Header.css';
+import Magnifier from '../assets/icons/magnifier.svg'
+import USAFlag from '../assets/icons/United.svg'
+import Notifications from '../assets/icons/notification-line.svg'
 
 const Header = () => {
   return (
@@ -9,17 +12,17 @@ const Header = () => {
         <div className="header-actions">
           <div className="search-container">
             <div className="search-input">
-              <span className="search-icon">🔍</span>
+              <img src={Magnifier} alt="Search" className="metric-icon" />
               <input type="text" placeholder="Search here..." />
             </div>
           </div>
           <div className="language-selector">
-            <span className="flag">🇺🇸</span>
+            <img src={USAFlag} alt="USA Flag" className="metric-icon" />
             <span className="language">Eng (US)</span>
             <span className="dropdown-arrow">▼</span>
           </div>
           <div className="notifications">
-            <span className="notification-icon">🔔</span>
+            <img src={Notifications} alt="Notifications" className="notification-icon" />
           </div>
           <div className="user-profile">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User" className="user-avatar" />

@@ -6,6 +6,7 @@ import chartIcon from '../assets/icons/Sales Icon.svg';
 import fileIcon from '../assets/icons/Order Icon.svg';
 import tagIcon from '../assets/icons/Disc Icon.svg';
 import usersIcon from '../assets/icons/New Costumers Icon.svg';
+import Export from '../assets/icons/Export Icon.svg'
 
 const TodaysSales = () => {
   const metricsData = [
@@ -50,7 +51,10 @@ const TodaysSales = () => {
           <h2>Today's Sales</h2>
           <p>Sales Summary</p>
         </div>
-        <button className="export-btn">⬆ Export</button>
+        <button className="export-btn">
+          <img src={Export} alt="Export" className="metric-icon" /> 
+          Export
+        </button>
       </div>
       
       <div className="todays-sales-grid">
