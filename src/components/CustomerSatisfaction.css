@@ -1,0 +1,62 @@
+.customer-satisfaction {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.customer-satisfaction h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.chart-container {
+  flex-grow: 1;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legend-item .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.legend-item .dot.blue {
+  background: #3B82F6;
+}
+
+.legend-item .dot.green {
+  background: #10B981;
+}
+
+.legend-item .label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.legend-item .value {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: #111827;
+}

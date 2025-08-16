@@ -5,6 +5,7 @@ import Chart from './Chart';
 import TopProducts from './TopProducts';
 import VisitorInsights from './VisitorInsights';
 import TotalRevenue from './TotalRevenue';
+import CustomerSatisfaction from './CustomerSatisfaction';
 
 const Dashboard = () => {
   return (
@@ -22,18 +23,7 @@ const Dashboard = () => {
         <div className="charts-section">
           <div className="chart-grid-three">
             <TotalRevenue />
-            <div className="chart-container">
-              <Chart
-                title="Customer Satisfaction"
-                type="line"
-                subtitle1="Last Month"
-                subtitle2="This Month"
-                value1="$3,004"
-                value2="$4,504"
-                data={[3, 5, 2, 6, 8, 4, 7, 9, 5, 8]}
-                colors={["#5570FF", "#00D4AA"]}
-              />
-            </div>
+            <CustomerSatisfaction />
             <div className="chart-container">
               <Chart
                 title="Target vs Reality"
