@@ -5,6 +5,7 @@ import {
   Bar,
   XAxis,
   YAxis,
+  Tooltip
 } from "recharts";
 import "./TargetVsReality.css";
 
@@ -39,6 +40,7 @@ export default function TargetVsReality() {
               tick={{ fill: "#9AA6B2", fontSize: 14, dy: 4 }}
             />
             <YAxis hide domain={[0, 270]} />
+            <Tooltip cursor={{ stroke: "#ccc", strokeWidth: 1 }} />
             <Bar
               dataKey="reality"
               fill="#2DC7A6"
