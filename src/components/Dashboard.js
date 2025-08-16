@@ -1,63 +1,25 @@
 import React from 'react';
 import './Dashboard.css';
-import MetricsCard from './MetricsCard';
+import TodaysSales from './TodaysSales';
 import Chart from './Chart';
 import TopProducts from './TopProducts';
 import VisitorInsights from './VisitorInsights';
 
 const Dashboard = () => {
-  const metricsData = [
-    {
-      title: "Today's Sales",
-      subtitle: "Sales Summary",
-      value: "$1k",
-      description: "Total Sales",
-      change: "+8% from yesterday",
-      color: "#FFCDD7",
-      icon: "📊"
-    },
-    {
-      title: "",
-      subtitle: "",
-      value: "300",
-      description: "Total Order",
-      change: "+5% from yesterday",
-      color: "#FFE4B5",
-      icon: "📦"
-    },
-    {
-      title: "",
-      subtitle: "",
-      value: "5",
-      description: "Product Sold",
-      change: "+1.2% from yesterday",
-      color: "#C8E6C9",
-      icon: "📈"
-    },
-    {
-      title: "",
-      subtitle: "",
-      value: "8",
-      description: "New Customers",
-      change: "+0.5% from yesterday",
-      color: "#D1C4E9",
-      icon: "👥"
-    }
-  ];
-
   return (
     <div className="dashboard">
       <div className="dashboard-content">
-        <div className="metrics-section">
-          <div className="metrics-grid">
-            {metricsData.map((metric, index) => (
-              <MetricsCard key={index} {...metric} />
-            ))}
+        <div className="top-section">
+          <div className="todays-sales-container">
+            <TodaysSales />
+          </div>
+          <div className="visitor-insights-container">
+            <VisitorInsights />
           </div>
         </div>
 
         <div className="charts-section">
-          <div className="chart-grid">
+          <div className="chart-grid-single">
             <div className="chart-container large">
               <Chart
                 title="Total Revenue"
@@ -65,9 +27,6 @@ const Dashboard = () => {
                 data={[2, 4, 6, 8, 4, 6, 8, 10, 6, 8, 4, 6]}
                 colors={["#00D4AA", "#5570FF"]}
               />
-            </div>
-            <div className="visitor-insights">
-              <VisitorInsights />
             </div>
           </div>
 
