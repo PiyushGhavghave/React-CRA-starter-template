@@ -31,9 +31,7 @@ const Dashboard = () => {
         </div>
 
         <div className="bottom-section">
-          <div className="products-section">
-            <TopProducts />
-          </div>
+          <TopProducts />
           <VolumeServiceLevel />
         </div>
       </div>

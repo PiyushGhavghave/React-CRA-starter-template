@@ -70,14 +70,6 @@
   margin-top: 20px;
 }
 
-.products-section, .service-level-section {
-  background-color: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-}
-
 @media (max-width: 1200px) {
   .top-section {
     grid-template-columns: 1fr;
