@@ -1,14 +1,16 @@
 import React from 'react';
 import './MetricsCard.css';
 
-const MetricsCard = ({ title, subtitle, value, description, change, color, icon }) => {
+const MetricsCard = ({ title, subtitle, value, description, change, color, icon, showHeader }) => {
   return (
     <div className="metrics-card" style={{ backgroundColor: color }}>
-      {title && (
+      {(title || showHeader) && (
         <div className="card-header">
-          <h3 className="card-title">{title}</h3>
-          {subtitle && <p className="card-subtitle">{subtitle}</p>}
-          <button className="export-btn">📤 Export</button>
+          <div className="card-header-left">
+            {title && <h3 className="card-title">{title}</h3>}
+            {subtitle && <p className="card-subtitle">{subtitle}</p>}
+          </div>
+          {showHeader && <button className="export-btn">📤 Export</button>}
         </div>
       )}
       <div className="card-content">
