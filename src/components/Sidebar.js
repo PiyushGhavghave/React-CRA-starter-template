@@ -1,5 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
+import DummyLogo from '../assets/icons/dummy logo.svg';
 
 const Sidebar = () => {
   const menuItems = [
@@ -16,10 +17,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <div className="logo">
-          <div className="logo-icon">D</div>
-          <span className="logo-text">Dabang</span>
-        </div>
+          <div className="logo">
+            <img src={DummyLogo} alt="Logo" className="logo-img" />
+            <span className="logo-text">Dabang</span>
+          </div>
       </div>
       <nav className="sidebar-nav">
         {menuItems.map((item) => (

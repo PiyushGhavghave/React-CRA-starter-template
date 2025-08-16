@@ -1,6 +1,6 @@
 .sidebar {
   width: 240px;
-  background-color: #5570FF;
+  background-color: #FFFFFF;
   padding: 24px 0;
   display: flex;
   flex-direction: column;
@@ -17,23 +17,20 @@
   gap: 12px;
 }
 
-.logo-icon {
+
+.logo-img {
   width: 32px;
   height: 32px;
-  background-color: white;
+  object-fit: contain;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 16px;
-  color: #5570FF;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .logo-text {
-  color: white;
+  color: #151D48;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .sidebar-nav {
