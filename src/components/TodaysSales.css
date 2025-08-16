@@ -1,33 +1,46 @@
 .todays-sales {
-  width: 100%;
   height: 100%;
+  width: 100%;
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pushes header up, grid down */
+}
+
+.sales-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.sales-header p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.export-btn {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #0f172a;
+  cursor: pointer;
 }
 
 .todays-sales-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  height: 100%;
-}
-
-/* Responsive breakpoints */
-@media (max-width: 1200px) {
-  .todays-sales-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .todays-sales-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    gap: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .todays-sales-grid {
-    gap: 12px;
-  }
 }
