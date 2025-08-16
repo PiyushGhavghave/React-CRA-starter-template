@@ -11,14 +11,27 @@
   gap: 32px;
 }
 
-.metrics-section {
-  width: 100%;
+.top-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
 }
 
-.metrics-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 20px;
+.todays-sales-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.visitor-insights-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
 }
 
 .charts-section {
@@ -27,15 +40,17 @@
   gap: 24px;
 }
 
-.chart-grid {
+.chart-grid-single {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
-  align-items: stretch;
 }
 
-.chart-grid:last-child {
+.chart-grid {
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
   margin-top: 20px;
 }
 
@@ -51,13 +66,6 @@
   grid-column: span 1;
 }
 
-.visitor-insights {
-  background-color: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-}
 
 .bottom-section {
   display: grid;
@@ -75,14 +83,15 @@
 }
 
 @media (max-width: 1200px) {
-  .metrics-grid {
-    grid-template-columns: 1fr 1fr;
+  .top-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  
+
   .chart-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .bottom-section {
     grid-template-columns: 1fr;
   }
@@ -92,8 +101,16 @@
   .dashboard-content {
     padding: 16px;
   }
-  
-  .metrics-grid {
-    grid-template-columns: 1fr;
+
+  .top-section {
+    gap: 12px;
+  }
+
+  .todays-sales-container {
+    padding: 16px;
+  }
+
+  .visitor-insights-container {
+    padding: 16px;
   }
 }
