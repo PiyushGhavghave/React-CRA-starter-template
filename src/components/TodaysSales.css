@@ -1,0 +1,33 @@
+.todays-sales {
+  width: 100%;
+  height: 100%;
+}
+
+.todays-sales-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .todays-sales-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .todays-sales-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .todays-sales-grid {
+    gap: 12px;
+  }
+}
