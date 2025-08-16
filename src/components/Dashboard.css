@@ -40,10 +40,11 @@
   gap: 24px;
 }
 
-.chart-grid-single {
+.chart-grid-three {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+  align-items: stretch;
 }
 
 .chart-grid {
@@ -62,9 +63,6 @@
   border: 1px solid #e2e8f0;
 }
 
-.chart-container.large {
-  grid-column: span 1;
-}
 
 
 .bottom-section {
@@ -88,6 +86,11 @@
     gap: 16px;
   }
 
+  .chart-grid-three {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .chart-grid {
     grid-template-columns: 1fr;
   }
@@ -103,6 +106,10 @@
   }
 
   .top-section {
+    gap: 12px;
+  }
+
+  .chart-grid-three {
     gap: 12px;
   }
 
