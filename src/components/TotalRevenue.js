@@ -1,5 +1,6 @@
 import ReactECharts from "echarts-for-react";
 import "./TotalRevenue.css";
+import { useMemo } from "react";
 
 const TotalRevenue = () => {
   const data = {
