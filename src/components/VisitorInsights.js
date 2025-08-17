@@ -1,59 +1,119 @@
-
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  ReferenceDot
-} from "recharts";
+import React, { useRef, useState, useMemo } from "react";
+import ReactECharts from "echarts-for-react";
 import "./VisitorInsights.css";
 
-const data = [
-  { month: "Jan", loyal: 320, new: 210, unique: 270 },
-  { month: "Feb", loyal: 310, new: 230, unique: 320 },
-  { month: "Mar", loyal: 280, new: 180, unique: 290 },
-  { month: "Apr", loyal: 220, new: 100, unique: 240 },
-  { month: "May", loyal: 200, new: 160, unique: 210 },
-  { month: "Jun", loyal: 280, new: 290, unique: 250 },
-  { month: "Jul", loyal: 330, new: 350, unique: 320 },
-  { month: "Aug", loyal: 310, new: 320, unique: 300 },
-  { month: "Sep", loyal: 280, new: 290, unique: 270 },
-  { month: "Oct", loyal: 260, new: 260, unique: 250 },
-  { month: "Nov", loyal: 230, new: 200, unique: 220 },
-  { month: "Dec", loyal: 200, new: 150, unique: 260 }
-];
+const visitorData = {
+  "Loyal Customers": [320, 310, 280, 220, 200, 280, 330, 310, 280, 260, 230, 200],
+  "New Customers": [210, 230, 180, 100, 160, 290, 350, 320, 290, 260, 200, 150],
+  "Unique Customers": [270, 320, 290, 240, 210, 250, 320, 300, 270, 250, 220, 260],
+};
 
-const VisitorInsights = () => {
+const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+export default function VisitorInsights() {
+  const chartRef = useRef(null);
+
+  const [legend, setLegend] = useState({
+    "Loyal Customers": true,
+    "New Customers": true,
+    "Unique Customers": true,
+  });
+
+  const handleLegendToggle = (name) => {
+    setLegend((prev) => ({ ...prev, [name]: !prev[name] }));
+    if (chartRef.current) {
+      const instance = chartRef.current.getEchartsInstance();
+      instance.dispatchAction({
+        type: "legendToggleSelect",
+        name,
+      });
+    }
+  };
+
+  const option = useMemo(() => {
+    return {
+      color: ["#8B5CF6", "#F43F5E", "#22C55E"],
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          lineStyle: { color: "#F43F5E" },
+        },
+      },
+      legend: { show: false },
+      grid: { top: 20, left: 10, right: 10, bottom: 20, containLabel: true },
+      xAxis: {
+        type: "category",
+        data: months,
+        axisTick: { show: false },
+        axisLine: { show: false },
+        axisLabel: {
+          fontSize: 12,
+          color: "#6b7280", // gray-500
+        },
+      },
+      yAxis: {
+        type: "value",
+        axisLabel: {
+          fontSize: 12,
+          color: "#9ca3af", // gray-400
+        },
+        splitLine: {
+          lineStyle: { color: "#e5e7eb" }, // gray-200
+        },
+      },
+      series: [
+        {
+          name: "Loyal Customers",
+          type: "line",
+          data: visitorData["Loyal Customers"],
+          smooth: true,
+          symbol: "circle",
+          showSymbol: false,
+          lineStyle: { width: 4 },
+        },
+        {
+          name: "New Customers",
+          type: "line",
+          data: visitorData["New Customers"],
+          smooth: true,
+          symbol: "circle",
+          showSymbol: false,
+          lineStyle: { width: 4 },
+        },
+        {
+          name: "Unique Customers",
+          type: "line",
+          data: visitorData["Unique Customers"],
+          smooth: true,
+          symbol: "circle",
+          showSymbol: false,
+          lineStyle: { width: 4 },
+        },
+      ],
+    };
+  }, []);
+
   return (
     <div className="visitor-insights">
       <h3 className="insights-title">Visitor Insights</h3>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend
-            verticalAlign="bottom"
-            height={36}
-            iconType="circle"
-          />
-    
 
-          {/* Lines */}
-          <Line type="monotone" dataKey="loyal" stroke="#8B5CF6" strokeWidth={3} dot={false} name="Loyal Customers" />
-          <Line type="monotone" dataKey="new" stroke="#F43F5E" strokeWidth={3} dot={false} name="New Customers" />
-          <Line type="monotone" dataKey="unique" stroke="#22C55E" strokeWidth={3} dot={false} name="Unique Customers" />
-        </LineChart>
-      </ResponsiveContainer>
+      <ReactECharts ref={chartRef} option={option} style={{ height: 220, width: "100%" }} />
+
+      <div className="custom-legend">
+        {Object.keys(legend).map((name, idx) => (
+          <button
+            key={name}
+            className={`legend-btn ${legend[name] ? "active" : ""}`}
+            onClick={() => handleLegendToggle(name)}
+          >
+            <span
+              className="legend-dot"
+              style={{ backgroundColor: option.color[idx] }}
+            ></span>
+            {name}
+          </button>
+        ))}
+      </div>
     </div>
   );
-};
-
-export default VisitorInsights;
+}
