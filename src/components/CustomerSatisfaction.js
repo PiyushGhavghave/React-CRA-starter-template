@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import "./CustomerSatisfaction.css";
+import BlueDot from '../assets/icons/Group 18.svg'
+import GreenDot from '../assets/icons/Group 18 Copy.svg'
 
 const CustomerSatisfaction = () => {
   const data = {
@@ -114,7 +116,7 @@ const CustomerSatisfaction = () => {
           role="button"
           aria-pressed={selected["Last Month"]}
         >
-          <span className="dot blue"></span>
+          <img src={BlueDot} alt="dot blue" />
           <span className="label">Last Month</span>
           <span className="value">$3,004</span>
         </div>
@@ -127,7 +129,7 @@ const CustomerSatisfaction = () => {
           role="button"
           aria-pressed={selected["This Month"]}
         >
-          <span className="dot green"></span>
+          <img src={GreenDot} alt="dot green" />
           <span className="label">This Month</span>
           <span className="value">$4,504</span>
         </div>
