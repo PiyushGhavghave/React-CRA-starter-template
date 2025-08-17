@@ -27,8 +27,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 13px;
+  color: #464E5F;
+  opacity: 0.5;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -42,8 +43,8 @@
 }
 
 .legend-btn.active {
-  font-weight: 600;
-  color: #111827;
+  color: #464E5F;
+  opacity: 1;
 }
 
 .legend-dot {
