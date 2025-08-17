@@ -1,37 +1,40 @@
-.customer-satisfaction {
-  background: #fff;
+.customer-satisfaction-card {
+  background: #ffffff;
   border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  height: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
 }
 
-.customer-satisfaction h2 {
+.customer-satisfaction-title {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 16px;
   color: #111827;
+  margin-bottom: 16px;
 }
 
-.chart-container {
-  flex-grow: 1;
+.customer-satisfaction-chart {
+  width: 100%;
+  flex: 1;
 }
 
-.legend {
+.customer-satisfaction-legend {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   margin-top: 16px;
   border-top: 1px solid #e5e7eb;
   padding-top: 12px;
+  gap: 24px;
 }
 
 .legend-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .legend-item .dot {
@@ -42,11 +45,11 @@
 }
 
 .legend-item .dot.blue {
-  background: #3B82F6;
+  background: #3b82f6;
 }
 
 .legend-item .dot.green {
-  background: #10B981;
+  background: #10b981;
 }
 
 .legend-item .label {
@@ -59,4 +62,10 @@
   font-weight: 700;
   margin-top: 4px;
   color: #111827;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: #e5e7eb;
 }

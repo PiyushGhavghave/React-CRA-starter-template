@@ -1,87 +1,108 @@
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-  Area
-} from "recharts";
+import React, { useMemo } from "react";
+import ReactECharts from "echarts-for-react";
 import "./CustomerSatisfaction.css";
 
-const data = [
-  { name: "Jan", lastMonth: 3000, thisMonth: 4000 },
-  { name: "Feb", lastMonth: 3500, thisMonth: 3700 },
-  { name: "Mar", lastMonth: 2000, thisMonth: 4200 },
-  { name: "Apr", lastMonth: 2200, thisMonth: 3900 },
-  { name: "May", lastMonth: 2800, thisMonth: 4300 },
-  { name: "Jun", lastMonth: 2900, thisMonth: 3600 },
-  { name: "Jul", lastMonth: 3100, thisMonth: 4500 },
-];
+const CustomerSatisfaction = () => {
+  const data = {
+    "Last Month": [3000, 3500, 2000, 2200, 2800, 2900, 3100],
+    "This Month": [4000, 3700, 4200, 3900, 4300, 3600, 4500],
+  };
 
-export default function CustomerSatisfaction() {
+  const option = useMemo(() => {
+    return {
+      color: ["#3B82F6", "#10B981"],
+
+      tooltip: {
+        trigger: "item",
+        confine: true,
+      },
+
+      legend: { show: false }, // we’ll build custom legend below
+
+      grid: {
+        top: 10,
+        left: -20,
+        right: 6,
+        bottom: 0,
+        containLabel: true,
+      },
+
+      xAxis: {
+        type: "category",
+        boundaryGap: false,
+        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        show: false,
+      },
+
+      yAxis: {
+        type: "value",
+        show: false,
+      },
+
+      series: [
+        {
+          name: "Last Month",
+          type: "line",
+          smooth: true,
+          data: data["Last Month"],
+          symbol: "circle",
+          symbolSize: 8,
+          areaStyle: {
+            color: {
+              type: "linear",
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                { offset: 0, color: "rgba(59, 130, 246, 0.32)" },
+                { offset: 1, color: "rgba(59, 130, 246, 0)" },
+              ],
+            },
+          },
+          emphasis: { focus: "series" },
+        },
+        {
+          name: "This Month",
+          type: "line",
+          smooth: true,
+          data: data["This Month"],
+          symbol: "circle",
+          symbolSize: 8,
+          areaStyle: {
+            color: {
+              type: "linear",
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                { offset: 0, color: "rgba(16, 185, 129, 0.32)" },
+                { offset: 1, color: "rgba(16, 185, 129, 0)" },
+              ],
+            },
+          },
+          emphasis: { focus: "series" },
+        },
+      ],
+    };
+  }, []);
+
   return (
-    <div className="customer-satisfaction">
-      <h2>Customer Satisfaction</h2>
+    <div className="customer-satisfaction-card">
+      <h2 className="customer-satisfaction-title">Customer Satisfaction</h2>
 
-      <div className="chart-container" style={{ boxShadow: "none", padding: 0 }}>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={data} >
-            <defs>
-              <linearGradient id="colorLastMonth" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity={0}/>
-                <stop offset="100%" stopColor="#3B82F6" stopOpacity={0}/>
-              </linearGradient>
-              <linearGradient id="colorThisMonth" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#10B981" stopOpacity={0}/>
-                <stop offset="100%" stopColor="#10B981" stopOpacity={0}/>
-              </linearGradient>
-            </defs>
-
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis hide/>
-            <YAxis hide />
-            <Tooltip cursor={{ stroke: "#ccc", strokeWidth: 1 }} />
-
-            <Area
-              type="monotone"
-              dataKey="lastMonth"
-              stroke="none"
-              fill="url(#colorLastMonth)"
-            />
-            <Area
-              type="monotone"
-              dataKey="thisMonth"
-              stroke="none"
-              fill="url(#colorThisMonth)"
-            />
-
-            <Line
-              type="monotone"
-              dataKey="lastMonth"
-              stroke="#3B82F6"
-              strokeWidth={2}
-              dot={{ fill: "#3B82F6", r: 4 }}
-            />
-            <Line
-              type="monotone"
-              dataKey="thisMonth"
-              stroke="#10B981"
-              strokeWidth={2}
-              dot={{ fill: "#10B981", r: 4 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="customer-satisfaction-chart">
+        <ReactECharts option={option} style={{ height: 182, width: "100%" }} />
       </div>
 
-      <div className="legend">
+      <div className="customer-satisfaction-legend">
         <div className="legend-item">
           <span className="dot blue"></span>
           <span className="label">Last Month</span>
           <span className="value">$3,004</span>
         </div>
+        <div className="divider"></div>
         <div className="legend-item">
           <span className="dot green"></span>
           <span className="label">This Month</span>
@@ -90,4 +111,6 @@ export default function CustomerSatisfaction() {
       </div>
     </div>
   );
-}
+};
+
+export default CustomerSatisfaction;
