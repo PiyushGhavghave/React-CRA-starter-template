@@ -1,7 +1,5 @@
-import React from 'react';
 import './Dashboard.css';
 import TodaysSales from './TodaysSales';
-import Chart from './Chart';
 import TopProducts from './TopProducts';
 import VisitorInsights from './VisitorInsights';
 import TotalRevenue from './TotalRevenue';

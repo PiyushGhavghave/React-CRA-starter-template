@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo } from "react";
 import ReactECharts from "echarts-for-react";
 import "./VisitorInsights.css";
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Sidebar.css';
 import DummyLogo from '../assets/icons/dummy logo.svg';
 import Dashboard from '../assets/icons/sidebar-icons/Graph 1.svg'

@@ -1,4 +1,3 @@
-import React from 'react';
 import './MetricsCard.css';
 
 const MetricsCard = ({ value, description, change, bgColor, iconBg, icon }) => {

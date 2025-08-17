@@ -1,4 +1,3 @@
-import React from 'react';
 import './Chart.css';
 
 const Chart = ({ title, type, subtitle1, subtitle2, value1, value2, data, colors }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Header.css';
 import Magnifier from '../assets/icons/magnifier.svg'
 import USAFlag from '../assets/icons/United.svg'

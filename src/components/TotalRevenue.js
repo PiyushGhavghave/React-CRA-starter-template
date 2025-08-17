@@ -1,4 +1,3 @@
-import React, { useMemo } from "react";
 import ReactECharts from "echarts-for-react";
 import "./TotalRevenue.css";
 

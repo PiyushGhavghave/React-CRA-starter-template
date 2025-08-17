@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import "./CustomerSatisfaction.css";
 import BlueDot from '../assets/icons/Group 18.svg'

@@ -1,4 +1,3 @@
-import React from 'react';
 import './TodaysSales.css';
 import MetricsCard from './MetricsCard';
 
