@@ -1,54 +1,21 @@
-.total-revenue {
-  background: #fff;
+.total-revenue-card {
+  background: #ffffff;
   border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px 20px 22px;
   display: flex;
   flex-direction: column;
-}
-
-.revenue-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 20px;
-}
-
-.revenue-chart {
-  flex: 1;
-  height: 280px;
-  margin-bottom: 20px;
-}
-
-.revenue-chart svg {
-  width: 100%;
   height: 100%;
 }
 
-.revenue-legend {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  font-size: 14px;
-  color: #475569;
+.total-revenue-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.legend-dot.blue {
-  background-color: #007bff;
-}
-
-.legend-dot.green {
-  background-color: #00c389;
+.total-revenue-chart {
+  width: 100%;
+  height: 100%;
 }

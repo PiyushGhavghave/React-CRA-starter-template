@@ -40,7 +40,7 @@
 
 .chart-grid-three {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 0.8fr 1fr;
   gap: 20px;
   align-items: stretch;
 }

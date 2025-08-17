@@ -1,81 +1,48 @@
 import React from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import "./TotalRevenue.css";
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const online = [14, 17, 6, 16, 12, 17, 21]; // in k
-const offline = [12, 12, 23, 7, 11, 13, 11]; // in k
-const maxValue = 25; // highest Y axis value (25k)
+const data = [
+  { name: "Monday", online: 14000, offline: 12500 },
+  { name: "Tuesday", online: 17000, offline: 12000 },
+  { name: "Wednesday", online: 6000, offline: 22500 },
+  { name: "Thursday", online: 15800, offline: 6700 },
+  { name: "Friday", online: 12000, offline: 11500 },
+  { name: "Saturday", online: 16700, offline: 13500 },
+  { name: "Sunday", online: 21000, offline: 11000 },
+];
 
 const TotalRevenue = () => {
   return (
-    <div className="total-revenue">
-      <h3 className="revenue-title">Total Revenue</h3>
-      <div className="revenue-chart">
-        <svg viewBox="0 0 700 320" preserveAspectRatio="none">
-          {/* Y-axis grid lines + labels */}
-          {[0, 5, 10, 15, 20, 25].map((val, i) => {
-            const y = 280 - (val / maxValue) * 240;
-            return (
-              <g key={i}>
-                <line x1="60" x2="660" y1={y} y2={y} stroke="#E5E7EB" strokeWidth="1" />
-                <text x="40" y={y + 4} fontSize="12" textAnchor="end" fill="#64748b">
-                  {val}k
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Bars */}
-          {days.map((day, i) => {
-            const groupX = 90 + i * 85;
-            const onlineHeight = (online[i] / maxValue) * 240;
-            const offlineHeight = (offline[i] / maxValue) * 240;
-
-            return (
-              <g key={i}>
-                <rect
-                  x={groupX}
-                  y={280 - onlineHeight}
-                  width="20"
-                  height={onlineHeight}
-                  fill="#007BFF"
-                  rx="4"
-                />
-                <rect
-                  x={groupX + 25}
-                  y={280 - offlineHeight}
-                  width="20"
-                  height={offlineHeight}
-                  fill="#00C389"
-                  rx="4"
-                />
-
-                {/* X-axis labels */}
-                <text
-                  x={groupX + 12}
-                  y={300}
-                  fontSize="12"
-                  textAnchor="middle"
-                  fill="#334155"
-                >
-                  {day}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
-      </div>
-
-      {/* Legend */}
-      <div className="revenue-legend">
-        <div className="legend-item">
-          <div className="legend-dot blue"></div>
-          <span>Online Sales</span>
-        </div>
-        <div className="legend-item">
-          <div className="legend-dot green"></div>
-          <span>Offline Sales</span>
-        </div>
+    <div className="total-revenue-card">
+      <h2 className="total-revenue-title">Total Revenue</h2>
+      <div className="total-revenue-chart">
+        <ResponsiveContainer width="100%" height={320}>
+          <BarChart data={data} barGap={6}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis dataKey="name" tick={{ fill: "#6b7280", fontSize: 8 }} />
+            <YAxis tick={{ fill: "#6b7280", fontSize: 14 }} />
+            <Tooltip />
+            <Legend
+              verticalAlign="bottom"
+              iconType="circle"
+              formatter={(value) => (
+                <span style={{ color: "#374151", fontSize: 14 }}>{value}</span>
+              )}
+            />
+            <Bar dataKey="online" fill="#1D4ED8" radius={[6, 6, 0, 0]} name="Online Sales" />
+            <Bar dataKey="offline" fill="#10B981" radius={[6, 6, 0, 0]} name="Offline Sales" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

@@ -26,8 +26,8 @@ export default function CustomerSatisfaction() {
     <div className="customer-satisfaction">
       <h2>Customer Satisfaction</h2>
 
-      <div className="chart-container" style={{ boxShadow: "none" }}>
-        <ResponsiveContainer width="100%" height={200} >
+      <div className="chart-container" style={{ boxShadow: "none", padding: 0 }}>
+        <ResponsiveContainer width="100%" height={200}>
           <LineChart data={data} >
             <defs>
               <linearGradient id="colorLastMonth" x1="0" y1="0" x2="0" y2="1">
