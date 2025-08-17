@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import "./CustomerSatisfaction.css";
 
@@ -7,6 +7,12 @@ const CustomerSatisfaction = () => {
     "Last Month": [3000, 3500, 2000, 2200, 2800, 2900, 3100],
     "This Month": [4000, 3700, 4200, 3900, 4300, 3600, 4500],
   };
+
+  // Declarative selection state — must match series names exactly
+  const [selected, setSelected] = useState({
+    "Last Month": true,
+    "This Month": true,
+  });
 
   const option = useMemo(() => {
     return {
@@ -17,7 +23,12 @@ const CustomerSatisfaction = () => {
         confine: true,
       },
 
-      legend: { show: false }, // we’ll build custom legend below
+      // Keep legend component (even if hidden) and drive selection here
+      legend: {
+        show: false,
+        data: ["Last Month", "This Month"],
+        selected, // <- sync with React state
+      },
 
       grid: {
         top: 10,
@@ -34,10 +45,7 @@ const CustomerSatisfaction = () => {
         show: false,
       },
 
-      yAxis: {
-        type: "value",
-        show: false,
-      },
+      yAxis: { type: "value", show: false },
 
       series: [
         {
@@ -56,7 +64,7 @@ const CustomerSatisfaction = () => {
               y2: 1,
               colorStops: [
                 { offset: 0, color: "rgba(59, 130, 246, 0.32)" },
-                { offset: 1, color: "rgba(59, 130, 246, 0)" },
+                { offset: 0.5, color: "rgba(59, 130, 246, 0)" },
               ],
             },
           },
@@ -78,7 +86,7 @@ const CustomerSatisfaction = () => {
               y2: 1,
               colorStops: [
                 { offset: 0, color: "rgba(16, 185, 129, 0.32)" },
-                { offset: 1, color: "rgba(16, 185, 129, 0)" },
+                { offset: 0.5, color: "rgba(16, 185, 129, 0)" },
               ],
             },
           },
@@ -86,7 +94,10 @@ const CustomerSatisfaction = () => {
         },
       ],
     };
-  }, []);
+  }, [selected, data]);
+
+  const toggle = (name) =>
+    setSelected((s) => ({ ...s, [name]: !s[name] }));
 
   return (
     <div className="customer-satisfaction-card">
@@ -97,13 +108,25 @@ const CustomerSatisfaction = () => {
       </div>
 
       <div className="customer-satisfaction-legend">
-        <div className="legend-item">
+        <div
+          className={`legend-item ${!selected["Last Month"] ? "inactive" : ""}`}
+          onClick={() => toggle("Last Month")}
+          role="button"
+          aria-pressed={selected["Last Month"]}
+        >
           <span className="dot blue"></span>
           <span className="label">Last Month</span>
           <span className="value">$3,004</span>
         </div>
+
         <div className="divider"></div>
-        <div className="legend-item">
+
+        <div
+          className={`legend-item ${!selected["This Month"] ? "inactive" : ""}`}
+          onClick={() => toggle("This Month")}
+          role="button"
+          aria-pressed={selected["This Month"]}
+        >
           <span className="dot green"></span>
           <span className="label">This Month</span>
           <span className="value">$4,504</span>
