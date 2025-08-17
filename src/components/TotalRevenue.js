@@ -1,48 +1,90 @@
-import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import React, { useMemo } from "react";
+import ReactECharts from "echarts-for-react";
 import "./TotalRevenue.css";
 
-const data = [
-  { name: "Monday", online: 14000, offline: 12500 },
-  { name: "Tuesday", online: 17000, offline: 12000 },
-  { name: "Wednesday", online: 6000, offline: 22500 },
-  { name: "Thursday", online: 15800, offline: 6700 },
-  { name: "Friday", online: 12000, offline: 11500 },
-  { name: "Saturday", online: 16700, offline: 13500 },
-  { name: "Sunday", online: 21000, offline: 11000 },
-];
-
 const TotalRevenue = () => {
+  const data = {
+    "Online Sales": [14, 17, 6, 15.8, 12, 16.7, 21],
+    "Offline Sales": [12.5, 12, 22.5, 6.7, 11.5, 13.5, 11],
+  };
+
+  const option = useMemo(() => {
+    return {
+      color: ["#0095FF", "#00E096"],
+
+      tooltip: {
+        confine: true,
+      },
+
+      legend: {
+        data: ["Online Sales", "Offline Sales"],
+        left: "center",
+        bottom: 0,
+        icon: "circle",
+        textStyle: {
+          fontSize: 13,
+          color: "#374151",
+        },
+        itemGap: 16,
+        itemHeight: 11,
+      },
+
+      xAxis: {
+        data: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        axisTick: { show: false },
+        axisLine: { show: false },
+        axisLabel: {
+          fontSize: 12,
+          color: "#6B7280",
+          margin: 18,
+        },
+      },
+
+      yAxis: {
+        type: "value",
+        axisLabel: {
+          fontSize: 12,
+          color: "#6B7280",
+          formatter: "{value}k",
+          margin: 18,
+        },
+        splitLine: {
+          lineStyle: { color: "#E5E7EB" },
+        },
+      },
+
+      grid: {
+        top: "4%",
+        left: 0,
+        right: 6,
+        bottom: 45,
+        containLabel: true,
+      },
+
+      series: [
+        {
+          name: "Online Sales",
+          type: "bar",
+          data: data["Online Sales"],
+          itemStyle: { borderRadius: 2 },
+          barCategoryGap: "65%",
+        },
+        {
+          name: "Offline Sales",
+          type: "bar",
+          data: data["Offline Sales"],
+          itemStyle: { borderRadius: 2 },
+          barCategoryGap: "65%",
+        },
+      ],
+    };
+  }, []);
+
   return (
     <div className="total-revenue-card">
       <h2 className="total-revenue-title">Total Revenue</h2>
       <div className="total-revenue-chart">
-        <ResponsiveContainer width="100%" height={320}>
-          <BarChart data={data} barGap={6}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis dataKey="name" tick={{ fill: "#6b7280", fontSize: 8 }} />
-            <YAxis tick={{ fill: "#6b7280", fontSize: 14 }} />
-            <Tooltip />
-            <Legend
-              verticalAlign="bottom"
-              iconType="circle"
-              formatter={(value) => (
-                <span style={{ color: "#374151", fontSize: 14 }}>{value}</span>
-              )}
-            />
-            <Bar dataKey="online" fill="#1D4ED8" radius={[6, 6, 0, 0]} name="Online Sales" />
-            <Bar dataKey="offline" fill="#10B981" radius={[6, 6, 0, 0]} name="Offline Sales" />
-          </BarChart>
-        </ResponsiveContainer>
+        <ReactECharts option={option} style={{ height: 320, width: "100%" }} />
       </div>
     </div>
   );
